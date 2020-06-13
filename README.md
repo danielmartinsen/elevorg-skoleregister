@@ -1,1 +1,1 @@
-# elevorg-skoleregister
+# Skoleregister for Elevorganisasjonen
