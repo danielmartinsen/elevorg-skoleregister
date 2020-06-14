@@ -1,0 +1,25 @@
+$blue: #0a466e;
+$orange: #ff6340;
+$yellow: #ffde66;
+$green: #73ffd7;
+$beige: #f5f3ee;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+
+  background-color: $beige;
+  color: $blue;
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 60rem;
+  margin: 1.5rem auto;
+}

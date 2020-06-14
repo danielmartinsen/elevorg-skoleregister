@@ -1,0 +1,31 @@
+$blue: #0a466e;
+$orange: #ff6340;
+$yellow: #ffde66;
+$green: #73ffd7;
+$beige: #f5f3ee;
+$white: #ffffff;
+
+.fylkeButton {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+
+  width: 300px;
+  margin: 10px 10px 0px 0px;
+  padding: 20px;
+
+  border: 4px solid #85a2b7;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: #b9ffeb;
+    cursor: pointer;
+  }
+}
+
+.fylkerDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

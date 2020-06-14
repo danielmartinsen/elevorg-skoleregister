@@ -1,0 +1,36 @@
+$blue: #0a466e;
+$orange: #ff6340;
+$yellow: #ffde66;
+$green: #73ffd7;
+$beige: #f5f3ee;
+$white: #ffffff;
+
+.buttongroup {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+
+  button {
+    padding: 12px;
+    margin-left: 10px;
+    outline: none;
+    border: none;
+    border-bottom: 5px solid $green;
+    background-color: transparent;
+
+    color: $blue;
+    font-size: 20px;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  max-width: 60rem;
+  margin: 1.5rem auto;
+}
