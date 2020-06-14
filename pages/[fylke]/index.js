@@ -4,6 +4,7 @@ import { useRouter, withRouter } from 'next/router'
 import { loadFirebase } from '../../lib/firebase'
 import Layout from '../../components/layout'
 import styles from '../../styles/skoleoversikt.module.scss'
+import Link from 'next/link'
 
 function Skoler({ router }) {
   const { fylke } = router.query
@@ -30,7 +31,9 @@ function Skoler({ router }) {
       </div>
 
       <div className={styles.topNav}>
-        <button className={styles.addButton}>Legg til skole</button>
+        <Link href={`/${fylke}/add`}>
+          <button className={styles.addButton}>Legg til skole</button>
+        </Link>
         <input
           type='text'
           name='search'
