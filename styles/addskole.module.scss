@@ -1,0 +1,71 @@
+$blue: #0a466e;
+$orange: #ff6340;
+$yellow: #ffde66;
+$green: #73ffd7;
+$beige: #f5f3ee;
+$white: #ffffff;
+
+.banner {
+  width: 100%;
+  padding: 20px;
+  border: 8px solid $blue;
+
+  text-align: center;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.topNav {
+  display: flex;
+  width: 100%;
+}
+
+.addForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  div {
+    width: 100%;
+  }
+
+  input {
+    width: 30%;
+    padding: 10px;
+    margin: 5px;
+    border: 3px solid #85a2b7;
+    outline: none;
+    font-size: 16px;
+    color: $blue;
+  }
+
+  input[type='submit'],
+  input[type='button'] {
+    width: 15%;
+    padding: 10px;
+    margin: 50px 0px 20px 5px;
+    border: 3px solid #85a2b7;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: $blue;
+
+    &:hover {
+      background-color: #85a2b7;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+.formFeedback {
+  width: 100%;
+  padding: 0px 20px;
+  margin: 5px;
+
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 8px solid $green;
+}

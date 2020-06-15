@@ -39,10 +39,8 @@ export default function Home() {
       <div className={styles.fylkerDiv}>
         {fylker.map((fylke) => {
           return (
-            <Link href={fylke.id}>
-              <div key={fylke.id} className={styles.fylkeButton}>
-                {fylke.navn}
-              </div>
+            <Link href={fylke.id} key={fylke.id}>
+              <div className={styles.fylkeButton}>{fylke.navn}</div>
             </Link>
           )
         })}

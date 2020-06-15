@@ -7,26 +7,30 @@ import styles from '../../../styles/skoleoversikt.module.scss'
 
 function SkoleInfo({ router }) {
   const { fylke } = router.query
-  const [fylkeNavn, setFylkeNavn] = useState('loading...')
+  const { id } = router.query
+  const [skoleNavn, setSkoleNavn] = useState('loading...')
 
   const firebase = loadFirebase()
   const db = firebase.firestore()
 
   useEffect(() => {
-    if (fylke) {
+    if (id) {
+      console.log(id, fylke)
       db.collection('Fylker')
         .doc(fylke)
+        .collection('Skoler')
+        .doc(id)
         .get()
         .then((doc) => {
-          setFylkeNavn(doc.data().Navn)
+          setSkoleNavn(doc.data().Navn)
         })
     }
-  }, [fylke])
+  }, [id])
 
   return (
     <Layout>
       <div className={styles.banner}>
-        <h2 style={{ margin: 0 }}>{fylkeNavn}</h2>
+        <h2 style={{ margin: 0 }}>{skoleNavn}</h2>
       </div>
 
       <div className={styles.topNav}>

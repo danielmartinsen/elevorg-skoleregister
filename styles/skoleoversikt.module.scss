@@ -28,8 +28,8 @@ $white: #ffffff;
   font-size: 20px;
   font-weight: bold;
   border: 5px solid #85a2b7;
-  border-radius: 50px;
   outline: none;
+  background-color: transparent;
 
   &:hover {
     cursor: pointer;
@@ -47,7 +47,38 @@ $white: #ffffff;
   font-size: 20px;
   font-weight: bold;
   border: 5px solid #85a2b7;
-  border-radius: 50px;
   outline: none;
   background-color: transparent;
+}
+
+.skoleDiv {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffe0d9;
+  border-bottom: 1px solid #3d3d3d;
+
+  div {
+    height: 100%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.icons {
+  margin-left: 8px;
+  padding: 3px;
+
+  &:hover {
+    cursor: pointer;
+    color: $orange;
+  }
 }
