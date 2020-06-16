@@ -10,9 +10,12 @@ function SkoleInfo({ router }) {
   const { fylke } = router.query
   const { id } = router.query
   const [info, setInfo] = useState([])
+  const [logg, setLogg] = useState([])
+  const [loggAddMsg, setLoggAddMsg] = useState('')
 
   const firebase = loadFirebase()
   const db = firebase.firestore()
+  const increment = firebase.firestore.FieldValue.increment(1)
 
   useEffect(() => {
     if (id) {
@@ -23,9 +26,69 @@ function SkoleInfo({ router }) {
         .get()
         .then((doc) => {
           setInfo(doc.data())
+          loadLogg()
         })
     }
   }, [id])
+
+  function loadLogg() {
+    db.collection('Fylker')
+      .doc(fylke)
+      .collection('Skoler')
+      .doc(id)
+      .get()
+      .then((doc) => {
+        const loggElements = []
+        for (var loggEntry in doc.data().Logg) {
+          if (loggEntry != 'count') {
+            loggElements.push(
+              <div className={styles.loggMessage}>
+                <span>
+                  {doc.data().Logg[loggEntry].Navn} ({doc.data().Logg[loggEntry].Tidspunkt})
+                </span>
+                <p>{doc.data().Logg[loggEntry].Kommentar}</p>
+              </div>
+            )
+          }
+        }
+        setLogg(loggElements)
+      })
+  }
+
+  function loggAdd() {
+    db.collection('Fylker')
+      .doc(fylke)
+      .collection('Skoler')
+      .doc(id)
+      .get()
+      .then((doc) => {
+        const loggIncrement = doc.data().Logg.count + 1
+        const loggCount = doc.data().Logg.count + 100
+
+        const dato = new Date()
+        const idag = dato.getDate() + '.' + (dato.getMonth() + 1) + '.' + dato.getFullYear()
+
+        const batch = db.batch()
+        const loggRef = db.collection('Fylker').doc(fylke).collection('Skoler').doc(id)
+
+        batch.set(
+          loggRef,
+          {
+            Logg: {
+              count: loggIncrement,
+              [loggCount]: { Navn: 'Test', Tidspunkt: idag, Kommentar: loggAddMsg },
+            },
+          },
+          { merge: true }
+        )
+
+        batch.commit().then(() => {
+          console.log(loggAddMsg)
+          loadLogg()
+          document.getElementById('loggAddTextarea').value = ''
+        })
+      })
+  }
 
   return (
     <Layout>
@@ -71,7 +134,16 @@ function SkoleInfo({ router }) {
       <div className={styles.column}>
         <div className={styles.infoDiv} style={{ marginLeft: 10 }}>
           <h2>Kontaktlogg</h2>
-          <p>Jobbes med ;))</p>
+          <div className={styles.loggDiv}>{logg}</div>
+
+          <textarea
+            className={styles.loggAddMessage}
+            placeholder='Din loggføring...'
+            id='loggAddTextarea'
+            onChange={(e) => setLoggAddMsg(e.target.value)}></textarea>
+          <button className={styles.loggAddButton} onClick={() => loggAdd()}>
+            Send
+          </button>
         </div>
       </div>
 
