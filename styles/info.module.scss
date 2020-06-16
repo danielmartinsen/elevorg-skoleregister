@@ -1,0 +1,32 @@
+$blue: #0a466e;
+$orange: #ff6340;
+$yellow: #ffde66;
+$green: #73ffd7;
+$beige: #f5f3ee;
+$white: #ffffff;
+
+.banner {
+  width: 100%;
+  padding: 20px;
+  border: 8px solid $blue;
+
+  text-align: center;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.column {
+  width: 50%;
+  display: inline-block;
+}
+
+.infoDiv {
+  border: 3px solid $blue;
+  padding: 10px;
+  margin: 20px 0px;
+
+  p,
+  h2 {
+    margin: 0;
+  }
+}

@@ -22,3 +22,60 @@ body {
   max-width: 60rem;
   margin: 1.5rem auto;
 }
+
+.Collapsible {
+  background-color: $green;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 2px solid white;
+  border-top: 0;
+  background-color: white;
+
+  p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 20px;
+  color: $blue;
+  position: relative;
+  border: 3px solid $blue;
+  padding: 10px;
+  background: $green;
+  color: $blue;
+
+  &:after {
+    font-family: 'Font Awesome\ 5 Free';
+    content: '\f107';
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 300ms;
+  }
+
+  &.is-open {
+    &:after {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
