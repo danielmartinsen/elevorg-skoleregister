@@ -39,6 +39,8 @@ function SkoleInfo({ router }) {
       .get()
       .then((doc) => {
         const loggElements = []
+        console.log(doc.data().Logg)
+        console.log(reverseObject(doc.data().Logg))
         for (var loggEntry in doc.data().Logg) {
           if (loggEntry != 'count') {
             loggElements.push(
@@ -51,8 +53,17 @@ function SkoleInfo({ router }) {
             )
           }
         }
-        setLogg(loggElements)
+        setLogg(loggElements.reverse())
       })
+  }
+
+  function reverseObject(object) {
+    var NewObj = {},
+      keysArr = Object.keys(object)
+    for (var i = keysArr.length - 1; i >= 0; i--) {
+      NewObj[keysArr[i]] = object[keysArr[i]]
+    }
+    return NewObj
   }
 
   function loggAdd() {
