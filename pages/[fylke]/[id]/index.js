@@ -83,7 +83,6 @@ function SkoleInfo({ router }) {
         )
 
         batch.commit().then(() => {
-          console.log(loggAddMsg)
           loadLogg()
           document.getElementById('loggAddTextarea').value = ''
         })
@@ -97,7 +96,7 @@ function SkoleInfo({ router }) {
       </div>
 
       <div className={styles.column}>
-        <div className={styles.infoDiv} style={{ marginRight: 10 }}>
+        <div className={styles.infoDiv} style={{ marginRight: 7.5 }}>
           <h2>Skoleinformasjon</h2>
           <p>Adresse: {info.Adresse}</p>
           <p>Telefon: {info.Telefon}</p>
@@ -132,7 +131,7 @@ function SkoleInfo({ router }) {
       </div>
 
       <div className={styles.column}>
-        <div className={styles.infoDiv} style={{ marginLeft: 10 }}>
+        <div className={styles.infoDiv} style={{ marginLeft: 7.5 }}>
           <h2>Kontaktlogg</h2>
           <div className={styles.loggDiv}>{logg}</div>
 
