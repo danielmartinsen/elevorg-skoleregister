@@ -43,7 +43,7 @@ function Skoler({ router }) {
         snapshot.forEach((doc) => {
           skoler.push({ id: doc.id, navn: doc.data().Navn, ansvar: doc.data().Ansvarsperson })
         })
-        setSkoler(skoler)
+        setSkoler(skoler.sort((a, b) => (a.navn > b.navn ? 1 : -1)))
       })
   }
 
